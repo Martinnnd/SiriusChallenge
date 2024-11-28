@@ -1,4 +1,5 @@
 import tweets from "../data/tweets.json";
+import Button from "./Button";
 
 export default function Users() {
   return (
@@ -20,9 +21,7 @@ export default function Users() {
             </div>
             </div>
 
-            <button className="bg-black rounded-2xl text-white h-8 w-16 mt-7 text-sm font-bold">
-              Button
-            </button>
+            <Button variant='primary' size='md' text='Button' onClick={""}/>
           </div>
         ))}
         <p className="text-sm text-blue-500 ml-2 mt-5 mb-3">Show more</p>

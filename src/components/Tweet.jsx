@@ -2,10 +2,11 @@ import tweets from "../data/tweets.json";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRetweet } from "@fortawesome/free-solid-svg-icons";
+import { faMessage } from "@fortawesome/free-solid-svg-icons";
 // import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
-import PortalExample from "./PortalExample";
+import ModalContent from "./ModalContent";
 
 export default function Tweet() {
   // const [comment, setComment] = useState(0);
@@ -13,6 +14,7 @@ export default function Tweet() {
   const [like, setLike] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [isRetweeted, setIsRetweeted] = useState(false);
+  const [showModal, setShowModal] = useState(false)
 
   const giveLike = () => {
     setIsLiked(!isLiked);
@@ -26,6 +28,8 @@ export default function Tweet() {
       setRetweet((retweet) => retweet + 1);
     }
   };
+
+   
 
   return (
     <div className="flex flex-col mt-5 ml-5 gap-10">
@@ -52,15 +56,12 @@ export default function Tweet() {
             />
           </div>
           <div className="flex mt-2 ml-[52px] text-gray-400 gap-7 mb-3">
-            {/* <button onClick={() => setComment((comment) => comment + 1)}>
+            <button onClick={setShowModal(true)}>
               <FontAwesomeIcon
                 icon={faMessage}
                 className="hover:text-red-600 mt-[7px]"
               />
-            </button> */}
-            <div className="clipping-container">
-              <PortalExample />
-            </div>
+            </button>
             <p></p>
             <button onClick={giveRetweet}>
               <FontAwesomeIcon
@@ -87,6 +88,8 @@ export default function Tweet() {
           </div>
         </div>
       ))}
+      <ModalContent show={showModal} onClose={setShowModal(false)} />
     </div>
+    
   );
 }
