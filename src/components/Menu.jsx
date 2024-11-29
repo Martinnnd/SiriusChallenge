@@ -9,23 +9,23 @@ export default function Menu() {
   return (
         <div className='sm:flex flex-col hidden sm:w-1/4'>
             <div className="mt-4 ml-20">
-                <img src={twicon} alt="" />
+                <a href=""><img src={twicon} alt="" /></a>
             </div>
             <div className="flex gap-3 mt-6 ml-20">
                 <img src={homebutton} alt="" />
-                <p className="font-bold">Home</p>
+                <a href=""><p className="font-bold">Home</p></a>
             </div>
             <div className="flex gap-3 mt-6 ml-20"> 
                 <img src={busqueda} alt="" />
-                <p>Explore</p>
+                <a href=""><p>Explore</p></a>
             </div>
             <div className="flex gap-3 mt-6 ml-20">
                 <img src={message} alt="" />
-                <p>Message</p>
+                <a href=""><p>Message</p></a>
             </div>
             <div className="flex gap-3 mt-6 ml-20">
                 <img src={profile} alt="" />
-                <p>Profile</p>
+                <a href=""><p>Profile</p></a>
             </div>
             <div>
                 <Button variant='main' size='md' text='Tweet' onClick={""}/>
