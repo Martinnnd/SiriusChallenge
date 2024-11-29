@@ -49,7 +49,7 @@ export default function Tweets() {
           />
         </div>
         <h5 className="hidden sm:flex sm:ml-3 sm:mt-3 sm:font-bold">Home</h5>
-        <div className="mt-4 ml-48 sm:hidden">
+        <div className="mt-4 ml-36 sm:hidden">
           <img src={twicon} alt="" />
         </div>
         <div className="flex justify-around mt-5 border-b border-gray-100">
@@ -112,7 +112,7 @@ export default function Tweets() {
         <div className="sm:hidden fixed top-[80%] left-[80%] w-12 h-12 rounded-full bg-blue-400">
           <FontAwesomeIcon
             icon={faPlus}
-            className="fixed top-[757px] left-[360px] text-white"
+            className="fixed top-[400px] left-[273px] text-white"
           />
         </div>
         <div className="border-l border-r border-b border-gray-100">

@@ -1,8 +1,3 @@
-import twicon from "../assets/icons8-twitter.svg";
-import homebutton from "../assets/icons8-casa.svg";
-import busqueda from "../assets/icons8-búsqueda.svg";
-import message from "../assets/mail-svgrepo-com.svg";
-import profile from "../assets/profile-2-svgrepo-com.svg";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
