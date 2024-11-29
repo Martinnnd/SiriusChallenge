@@ -13,7 +13,7 @@ export const Modal = ({ show, onClose, children }) => {
         <div
           onClick={handleClose}
           className={
-            "w-screen h-full fixed top-0 left-0 bg-black bg-opacity-10 z-50 flex justify-center items-center"
+            "w-screen h-full fixed top-0 left-0 bg-black bg-opacity-10 z-50 flex justify-center items-center p-1"
           }
         >
           {children}

@@ -26,23 +26,47 @@ export default function Menu() {
       <div className="flex gap-3 mt-6 ml-20">
         <FontAwesomeIcon icon={faMagnifyingGlass} className="mt-1" />
         <a href="">
-          <p className="transition hover:font-bold hover:transition ml-1">Explore</p>
+          <p className="transition hover:font-bold hover:transition ml-1">
+            Explore
+          </p>
         </a>
       </div>
       <div className="flex gap-3 mt-6 ml-20">
         <FontAwesomeIcon icon={faEnvelope} className="mt-1" />
         <a href="">
-          <p className="transition hover:font-bold hover:transition ml-1">Message</p>
+          <p className="transition hover:font-bold hover:transition ml-1">
+            Message
+          </p>
         </a>
       </div>
       <div className="flex gap-3 mt-6 ml-20">
         <FontAwesomeIcon icon={faUser} className="mt-1" />
         <a href="">
-          <p className="ml-1 transition hover:font-bold hover:transition">Profile</p>
+          <p className="ml-1 transition hover:font-bold hover:transition">
+            Profile
+          </p>
         </a>
       </div>
       <div>
-        <Button variant="main" size="md" text="Tweet" onClick={""} />
+        <Button
+          variant="main"
+          size="md"
+          text="Tweet"
+          onClick={() => {
+            fetch("https://example.com/api/tweet", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                tweetId: "12345",
+                userId: "67890",
+              }),
+            }).catch((error) => {
+              console.error("Error sending retweet request:", error);
+            });
+          }}
+        />
       </div>
     </nav>
   );

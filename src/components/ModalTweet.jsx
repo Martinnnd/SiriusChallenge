@@ -41,9 +41,9 @@ export default function ModalTweet({ show, onClose, tweet }) {
                 className="w-11 h-11 rounded-full"
                 alt=""
               />
-              <p className="text-lg text-gray-500 mt-2 ml-2">Tweet your reply</p>
+              <input type="text" placeholder="Tweet your reply" className="bg-white ml-6  w-[70%]"/>
           </div>
-          <div className="flex justify-around gap-[350px] 2xl:gap-[550px]">
+          <div className="flex justify-around gap-[350px] 2xl:gap-[550px] mt-20">
           <FontAwesomeIcon icon={faImages} className="mt-5 ml-12 sm:mt-10 sm:ml-12 text-blue-500"/>
           <Button variant='light' size='sm' text='Tweet' onClick={""}/>
           </div>
