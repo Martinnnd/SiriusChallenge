@@ -1,5 +1,8 @@
+import { faImages } from "@fortawesome/free-regular-svg-icons";
 import tweets from "../data/tweets.json";
 import Tweet from "./Tweet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Button from "./Button";
 
 export default function Tweets() {
   return (
@@ -20,11 +23,9 @@ export default function Tweets() {
         ))}
         <p className="text-gray-500 mt-2 ml-2 text-lg">What´ Happening?</p>
       </div>
-      <div className="flex justify-between border-b border-gray-100">
-        <img src="" alt="" />
-        <button className="bg-blue-300 rounded-2xl text-white h-8 w-16 mt-14 mb-4 text-sm font-bold mr-5">
-          Tweet
-        </button>
+      <div className="flex justify-between border-b border-gray-100 ">
+        <FontAwesomeIcon icon={faImages} className="mt-10 ml-5 text-blue-500"/>
+        <Button variant='light' size='sm' text='Tweet' onClick={""}/>
       </div>
       <div className="border-l border-r border-b border-gray-100">
 

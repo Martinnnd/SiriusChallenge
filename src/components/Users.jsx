@@ -21,7 +21,7 @@ export default function Users() {
             </div>
             </div>
 
-            <Button variant='primary' size='md' text='Button' onClick={""}/>
+            <Button variant='black' size='sm' text='Button' onClick={""}/>
           </div>
         ))}
         <p className="text-sm text-blue-500 ml-2 mt-5 mb-3">Show more</p>

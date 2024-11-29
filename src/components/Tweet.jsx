@@ -1,40 +1,46 @@
-import tweets from "../data/tweets.json";
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRetweet } from "@fortawesome/free-solid-svg-icons";
-import { faMessage } from "@fortawesome/free-solid-svg-icons";
-// import { faMessage } from "@fortawesome/free-regular-svg-icons";
+import { faRetweet, faMessage } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import ModalContent from "./ModalContent";
+import tweets from "../data/tweets.json";
 
 export default function Tweet() {
-  // const [comment, setComment] = useState(0);
   const [retweet, setRetweet] = useState(0);
   const [like, setLike] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [isRetweeted, setIsRetweeted] = useState(false);
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
+  const [selectedTweet, setSelectedTweet] = useState(null);
 
   const giveLike = () => {
     setIsLiked(!isLiked);
-    if (!isLiked) {
-      setLike((like) => like + 1);
-    }
-  };
-  const giveRetweet = () => {
-    setIsRetweeted(!isRetweeted);
-    if (!isRetweeted) {
-      setRetweet((retweet) => retweet + 1);
-    }
+    setLike((like) => like + (isLiked ? -1 : 1));
   };
 
-   
+  const giveRetweet = () => {
+    setIsRetweeted(!isRetweeted);
+    setRetweet((retweet) => retweet + (isRetweeted ? -1 : 1));
+  };
+
+  const openModal = (tweet) => {
+    setSelectedTweet(tweet);
+    setShowModal(true);
+  };
 
   return (
     <div className="flex flex-col mt-5 ml-5 gap-10">
-      {tweets.slice(1, 3).map((item) => (
+      {tweets.slice(1, 4).map((item) => (
         <div key={item.id} className="flex flex-col">
+          <ModalContent
+            show={showModal}
+            onClose={() => {
+              setShowModal(false);
+              setSelectedTweet(null);
+            }}
+            tweet={selectedTweet}
+          />
           <div className="flex">
             <img
               src={item.author.profilePicture}
@@ -48,21 +54,23 @@ export default function Tweet() {
             <p className="mt-2 ml-2 text-gray-400 text-sm">{item.createdAt}</p>
           </div>
           <div className="flex flex-col">
-            <p className="mt-3 ml-[52px]">{item.content}</p>
-            <img
-              src={item.images}
-              className="w-4/5 h-56 ml-[52px] rounded-xl mt-5"
-              alt=""
-            />
+            <p className="mt-3 ml-[52px] mr-20">{item.content}</p>
+            {item.images && (
+              <img
+                src={item.images}
+                className="w-4/5 h-56 ml-[52px] rounded-xl mt-5 2xl:h-[400px]"
+                alt=""
+              />
+            )}
           </div>
           <div className="flex mt-2 ml-[52px] text-gray-400 gap-7 mb-3">
-            <button onClick={setShowModal(true)}>
+            <button onClick={() => openModal(item)}>
               <FontAwesomeIcon
                 icon={faMessage}
-                className="hover:text-red-600 mt-[7px]"
+                className="hover:text-blue-400 mt-[7px]"
               />
             </button>
-            <p></p>
+            <p>{item.comments.length}</p>
             <button onClick={giveRetweet}>
               <FontAwesomeIcon
                 icon={faRetweet}
@@ -88,8 +96,6 @@ export default function Tweet() {
           </div>
         </div>
       ))}
-      <ModalContent show={showModal} onClose={setShowModal(false)} />
     </div>
-    
   );
 }

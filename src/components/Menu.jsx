@@ -3,6 +3,7 @@ import homebutton from "../assets/icons8-casa.svg"
 import busqueda from "../assets/icons8-búsqueda.svg"
 import message from "../assets/mail-svgrepo-com.svg"
 import profile from "../assets/profile-2-svgrepo-com.svg"
+import Button from "./Button"
 
 export default function Menu() {
   return (
@@ -27,7 +28,7 @@ export default function Menu() {
                 <p>Profile</p>
             </div>
             <div>
-                <button className="mt-8 bg-blue-400 rounded-2xl text-center text-white font-bold pt-1 pb-1 ml-20 w-3/4">Tweet</button>
+                <Button variant='main' size='md' text='Tweet' onClick={""}/>
             </div>
         </div>
   )
