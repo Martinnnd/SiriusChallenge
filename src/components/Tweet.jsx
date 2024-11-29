@@ -1,18 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRetweet, faMessage } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
 import ModalTweet from "./ModalTweet";
-import tweets from "../data/tweets.json";
 
 export default function Tweet() {
+  const [tweets, setTweets] = useState([]);
   const [retweet, setRetweet] = useState(0);
   const [like, setLike] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [isRetweeted, setIsRetweeted] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [selectedTweet, setSelectedTweet] = useState(null);
+
+  useEffect(() => {
+    fetch("/src/data/tweets.json")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => setTweets(data))
+      .catch((error) => console.error("Error fetching tweets:", error));
+  }, []);
 
   const giveLike = () => {
     setIsLiked(!isLiked);
@@ -31,7 +43,7 @@ export default function Tweet() {
 
   return (
     <div className="flex flex-col mt-5 ml-5 gap-10">
-      {tweets.slice(1, 3).map((item) => (
+      {tweets.map((item) => (
         <div key={item.id} className="flex flex-col">
           <ModalTweet
             show={showModal}
@@ -55,6 +67,7 @@ export default function Tweet() {
           </div>
           <div className="flex flex-col">
             <p className="mt-3 ml-[52px] mr-20">{item.content}</p>
+
             {item.images && (
               <img
                 src={item.images}
