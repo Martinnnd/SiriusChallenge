@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRetweet, faMessage } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
-import ModalContent from "./ModalContent";
+import ModalTweet from "./ModalTweet";
 import tweets from "../data/tweets.json";
 
 export default function Tweet() {
@@ -31,9 +31,9 @@ export default function Tweet() {
 
   return (
     <div className="flex flex-col mt-5 ml-5 gap-10">
-      {tweets.slice(1, 4).map((item) => (
+      {tweets.slice(1, 3).map((item) => (
         <div key={item.id} className="flex flex-col">
-          <ModalContent
+          <ModalTweet
             show={showModal}
             onClose={() => {
               setShowModal(false);

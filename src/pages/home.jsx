@@ -2,7 +2,6 @@ import './App.css'
 import Menu from './components/Menu'
 import Tweets from './components/Tweets'
 import Users from './components/Users'
-// import  Prueba  from './components/Prueba'
 
 function App() {
 
@@ -12,7 +11,6 @@ function App() {
     <Menu />
     <Tweets />
     <Users />
-    {/* <Prueba /> */}
     </div>
     </>
   )

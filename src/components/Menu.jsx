@@ -7,7 +7,7 @@ import Button from "./Button"
 
 export default function Menu() {
   return (
-        <div className='flex flex-col w-1/4'>
+        <div className='sm:flex flex-col hidden sm:w-1/4'>
             <div className="mt-4 ml-20">
                 <img src={twicon} alt="" />
             </div>

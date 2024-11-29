@@ -3,7 +3,7 @@ import Button from "./Button";
 
 export default function Users() {
   return (
-    <div className="w-1/4">
+    <div className="hidden sm:w-1/4 sm:flex sm:flex-col">
       <input
         type="text"
         placeholder="input"

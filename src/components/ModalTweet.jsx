@@ -1,10 +1,10 @@
-import { faX } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faX } from "@fortawesome/free-solid-svg-icons";
 import { faImages } from "@fortawesome/free-regular-svg-icons";
 import { Modal } from "./Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "./Button";
 
-export default function ModalContent({ show, onClose, tweet }) {
+export default function ModalTweet({ show, onClose, tweet }) {
   if (!tweet) {
     return null;
   }
@@ -12,8 +12,12 @@ export default function ModalContent({ show, onClose, tweet }) {
   return (
     <>
       <Modal show={show} onClose={onClose}>
-        <div className="flex flex-col bg-white w-2/5 h-[55%] rounded-2xl mb-36 mr-10">
-          <FontAwesomeIcon icon={faX} className="mr-[470px] mt-8 2xl:mr-[645px]"/>
+        <div className="flex flex-col bg-white w-full h-full sm:w-2/5 sm:h-[55%] sm:rounded-2xl sm:mb-36 sm:mr-10">
+          <div className="sm:hidden flex justify-between">
+          <FontAwesomeIcon icon={faArrowLeft} className="sm:hidden mt-6 ml-7" />
+          <Button variant='modal' size='sm' text='Tweet' onClick={""}/>
+          </div>
+          <FontAwesomeIcon icon={faX} className="hidden sm:mr-[470px] sm:mt-8 2xl:mr-[645px]"/>
           <div className="mt-5 2xl:mt-10">
             <div className="flex ml-4 2xl:ml-10">
               <img
@@ -40,7 +44,7 @@ export default function ModalContent({ show, onClose, tweet }) {
               <p className="text-lg text-gray-500 mt-2 ml-2">Tweet your reply</p>
           </div>
           <div className="flex justify-around gap-[350px] 2xl:gap-[550px]">
-          <FontAwesomeIcon icon={faImages} className="mt-10 ml-12 text-blue-500"/>
+          <FontAwesomeIcon icon={faImages} className="mt-5 ml-12 sm:mt-10 sm:ml-12 text-blue-500"/>
           <Button variant='light' size='sm' text='Tweet' onClick={""}/>
           </div>
         </div>
