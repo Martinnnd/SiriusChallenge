@@ -6,7 +6,6 @@ import ModalTweet from "./ModalTweet";
 import { useState } from "react";
 
 const Tweet = ({ tweet }) => {
-
   const [isLiked, setIsLiked] = useState(false);
   const [isRetweeted, setIsRetweeted] = useState(false);
   const [retweet, setRetweet] = useState(0);
@@ -14,10 +13,12 @@ const Tweet = ({ tweet }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedTweet, setSelectedTweet] = useState(null);
 
-
   const formatDate = (isoDate) => {
     const date = new Date(isoDate);
-    return new Intl.DateTimeFormat('es-ES', { day: '2-digit', month: 'short' }).format(date);
+    return new Intl.DateTimeFormat("es-ES", {
+      day: "2-digit",
+      month: "short",
+    }).format(date);
   };
 
   const giveLike = () => {
@@ -48,14 +49,18 @@ const Tweet = ({ tweet }) => {
       <div className="flex">
         <img
           src={tweet.author.profilePicture}
-          className="w-11 h-11 rounded-full"
+          className="w-11 h-11 rounded-full cursor-pointer"
           alt=""
         />
-        <p className="mt-2 ml-2 text-sm">{tweet.author.firstName}</p>
-        <p className="mt-2 ml-2 text-gray-400 text-sm">
+        <p className="mt-2 ml-2 text-sm cursor-pointer">
+          {tweet.author.firstName}
+        </p>
+        <p className="mt-2 ml-2 text-gray-400 text-sm cursor-pointer">
           @{tweet.author.username}
         </p>
-        <p className="mt-2 ml-2 text-gray-400 text-sm">{formatDate(tweet.createdAt)}</p>
+        <p className="mt-2 ml-2 text-gray-400 text-sm">
+          {formatDate(tweet.createdAt)}
+        </p>
       </div>
       <div className="flex flex-col">
         <p className="mt-3 ml-[52px] mr-20">{tweet.content}</p>
@@ -76,7 +81,24 @@ const Tweet = ({ tweet }) => {
           />
         </button>
         <p>{tweet.comments.length}</p>
-        <button onClick={giveRetweet}>
+        <button
+          onClick={() => {
+            giveRetweet();
+
+            fetch("https://example.com/api/retweet", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                tweetId: "12345",
+                userId: "67890",
+              }),
+            }).catch((error) => {
+              console.error("Error sending retweet request:", error);
+            });
+          }}
+        >
           <FontAwesomeIcon
             icon={faRetweet}
             className={
@@ -87,7 +109,24 @@ const Tweet = ({ tweet }) => {
           />
         </button>
         <p>{retweet}</p>
-        <button onClick={giveLike}>
+        <button
+          onClick={() => {
+            giveLike();
+
+            fetch("https://example.com/api/like", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                tweetId: "12345",
+                userId: "67890",
+              }),
+            }).catch((error) => {
+              console.error("Error sending retweet request:", error);
+            });
+          }}
+        >
           <FontAwesomeIcon
             icon={isLiked ? solidHeart : regularHeart}
             className={
@@ -100,7 +139,7 @@ const Tweet = ({ tweet }) => {
         <p>{like}</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Tweet
+export default Tweet;

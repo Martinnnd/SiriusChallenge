@@ -1,13 +1,17 @@
-import './App.css'
-import Home from "./home"
+import Menu from "../components/Menu";
+import Feed from "../components/Feed";
+import Users from "../components/Users";
 
-function App() {
-
+function Home() {
   return (
     <>
-      <Home/>
+      <div className="flex justify-between h-screen">
+        <Menu />
+        <Feed />
+        <Users />
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default Home;
